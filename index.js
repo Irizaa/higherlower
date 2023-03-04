@@ -14,7 +14,7 @@ const pool = new Pool({
 
 app.get('/api/data', async (req, res) => {
     let limit = req.query.limit
-    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000')
     try {
         const { rows } = await pool.query(`SELECT id, name, price, image FROM items ORDER BY random()LIMIT ${limit}`)
         res.json(rows)
