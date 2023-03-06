@@ -1,0 +1,143 @@
+.Game {
+    text-align: center;
+    background-image: linear-gradient(to right, #3b6978 50%, #a28089 50%);
+    height: 100vh;
+}
+#left-section {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 50%;
+  display: block;
+}
+.left-text {
+  color: whitesmoke;
+  font-size: calc(15px + 2vmin);
+  text-align: center;
+  width: 50%;
+  display: inline-block;
+}
+h3 {
+  margin: 0;
+  color: white;
+  font-size: calc(22px + 2vmin);
+  display: inline-block;
+}
+#right-price {
+  font-size: 0;
+}
+.right-text {
+  color: whitesmoke;
+  font-size: calc(15px + 2vmin);
+  text-align :center;
+  width: 50%;
+  display: inline-block;
+}
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+  #options {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    height: 100%;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5); /* transparent dark overlay */
+    color: #ffffff;
+    font-size: 2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    opacity: 0;
+    transition: opacity 0.5s;
+  }
+  
+  #options button {
+    margin: 0 1rem;
+    padding: 1rem;
+    border: none;
+    background-color: #ffffff;
+    color: #3b6978;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+  
+  .item-image.right:hover + .options,
+  #options:hover {
+    opacity: 1;
+  }
+  .image {
+    width: 750px;
+    height: 650px;
+    object-fit: cover;
+    transition: transform 0.5s ease-in-out;
+    border-radius: 10%;
+    margin: 1px 1px 1px 1px;
+  }
+  .left {
+    margin-right: 13vw;
+    transform: translateX(-120%);
+  }
+  
+  .right {
+    right: 0;
+    transform: translateX(120%);
+  }
+  
+  .show.left {
+    transform: translateX(0);
+  }
+  
+  .show.right {
+    transform: translateX(0);
+  }
+  
+  #vs-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    /* bring your own prefixes */
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    padding: 20px;
+    border-radius: 50%;
+    background-color: #fff;
+    color: #000;
+    font-size: 26px;
+    font-weight: bold;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.25);
+    transition: transform 0.5s ease-in-out
+  }
+
+  .footer {
+    height: 5%;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #8458B3;
+    color: white;
+    display: inline-block;
+  }
+  #footer-left {
+    top: 0;
+    margin-left: 4vw;
+    margin-top: -5px;
+    text-align: left;
+    display: inline-block;
+  }
+  #footer-right {
+    top: 0;
+    margin-left: 4vw;
+    margin-top: -5px;
+    text-align: right;
+    display: inline-block;
+  }

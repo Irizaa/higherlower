@@ -1,0 +1,16 @@
+* {
+  overflow: hidden;
+}
+.App {
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+h2 {
+  font-size: calc(28px + 2vmin);
+  margin-top: 25vh;
+  margin-bottom: 0px;
+}
+p {
+  font-size: calc(20px + 2vmin);
+}
