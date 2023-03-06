@@ -40,7 +40,7 @@ const Game = () => {
       clearInterval(intervalId);
     };
   }
-  // Return button back to original state.
+  // Return everything back to original state & update variables.
   const handleButton = (correct) => {
     setShowImages(false)
     const timer = setTimeout(() => {
@@ -50,7 +50,6 @@ const Game = () => {
       document.getElementById('vs-button').style.fontSize = '26px'
       document.getElementById('vs-button').style.padding = '20px'
       if(correct) {
-        console.log('x')   
         setLeftItem(rightItem)
         axios.get('http://localhost:3001/api/data?limit=1')
         .then(response => {
