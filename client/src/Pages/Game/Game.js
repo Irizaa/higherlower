@@ -1,7 +1,6 @@
 import React from 'react'
 import './Game.css'
 import { useState, useEffect } from 'react';
-import {useNavigate} from 'react-router'
 import axios from 'axios'
 const Game = () => {
   const [count, setCount] = useState(0)
@@ -10,6 +9,7 @@ const Game = () => {
   const [score, setScore] = useState(0)
   const [leftItem, setLeftItem] = useState(null)
   const [rightItem, setRightItem] = useState(null)
+  const [showGameOver, setShowGameOver] = useState(false)
   let i = 0
   
   // upon user guess, ramp-up right price from 0 to actual value & set button to represent correct/incorrect
@@ -42,7 +42,7 @@ const Game = () => {
   }
   // Return everything back to original state & update variables.
   const handleButton = (correct) => {
-    setShowImages(false)
+    if(correct) setShowImages(false)
     const timer = setTimeout(() => {
       setShowImages(true)
       document.getElementById('options').style.display = 'flex'
@@ -59,9 +59,8 @@ const Game = () => {
         })
         .catch(err => console.error(err))
       } else {  
-        setCount(0)
-        setScore(0)
-        window.location.reload()
+        document.getElementById('vs-button').style.display = 'none'
+        document.getElementById('gameover').style.opacity = '1'
       }
     }, 1500);
     return () => clearTimeout(timer);
@@ -76,15 +75,38 @@ const Game = () => {
     if((choice === 'higher' && rightPrice >= leftPrice) || (choice === 'lower' && rightPrice <= leftPrice)) {
       setScore(score + 1)
     } else {
-
+      setShowGameOver(true)
     }
     if(score >= localStorage.getItem('high_score')) localStorage.setItem('high_score', score + 1)
+  }
+  const resetGame = () => {
+    setShowImages(false)
+    document.getElementById('gameover').style.opacity = '0'
+    document.getElementById('vs-button').style.display = 'inline-block'
+    document.getElementById('right-price').style.fontSize = '0'
+    gameOverHelper()
+  }
+  const gameOverHelper = () => {
+    const timer = setTimeout(() => {
+      axios.get('http://localhost:3001/api/data?limit=2')
+    .then(response => {
+      setLeftItem(response.data[0])
+      setRightItem(response.data[1])
+    })
+      setShowImages(true)
+      setScore(0)
+      setCount(0)
+      setShowGameOver(false)
+    }, 1500)
+    return () => clearTimeout(timer);
   }
   const handleMouseEnter = () => {
     setShowOptions(true)
   }
-  const handleMouseLeave = () => {
-    setShowOptions(false)
+  const handleMouseLeave = (e) => {
+    if (!e.relatedTarget || !e.currentTarget.contains(e.relatedTarget)) {
+      setShowOptions(false);
+    }
   }
   useEffect(() => {
     axios.get('http://localhost:3001/api/data?limit=2')
@@ -127,6 +149,15 @@ const Game = () => {
         <div id="options">
           <button onClick={() => handleUserClick(leftItem?.price, rightItem?.price, 'higher')}>Higher</button>
           <button onClick = {() => handleUserClick(leftItem?.price, rightItem?.price, 'lower')}>Lower</button>
+        </div>
+      )}
+      {showGameOver && (
+        <div id = 'gameover'>
+          <h4>{`score: ${score}`}</h4>
+          <h4>{`high-score: ${localStorage.getItem('high_score')}`}</h4>
+          <h2>YOU LOST</h2>
+          <p>... but you can always try again</p>
+          <button class = 'button-slide slide-left' onClick = {() => resetGame()}>PLAY AGAIN</button>
         </div>
       )}
       

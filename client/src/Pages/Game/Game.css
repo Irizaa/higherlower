@@ -40,7 +40,7 @@ h3 {
     align-items: center;
     overflow: hidden;
   }
-  #options {
+#options {
     position: absolute;
     top: 0;
     left: 50%;
@@ -56,9 +56,64 @@ h3 {
     text-transform: uppercase;
     opacity: 0;
     transition: opacity 0.5s;
-  }
-  
-  #options button {
+}
+#gameover {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    display: absolute;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.85); /* transparent dark overlay */
+    font-size: 2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+#gameover-content {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  display: block;
+}
+#gameover h2 {
+  color: white;
+  margin-top: 11vh;
+}
+#gameover p {
+  color: white;
+  text-transform:none;
+}
+h4 {
+  margin-left: 4vw;
+  color: white;
+  display: inline-block;
+  margin-bottom : 0px; 
+  padding-bottom: 0px;
+}
+.button-slide {
+  color: #000;
+  border: 2px solid rgb(216, 2, 134);
+  border-radius: 0px;
+  padding: 18px 36px;
+  display: inline-block;
+  font-family: "Lucida Console", Monaco, monospace;
+  font-size: 14px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  box-shadow: inset 0 0 0 0 #D80286;
+  -webkit-transition: ease-out 0.4s;
+  -moz-transition: ease-out 0.4s;
+  transition: ease-out 0.4s;
+}
+.slide-left:hover {
+  box-shadow: inset 0 0 0 50px #D80286;
+}
+#options button {
     margin: 0 1rem;
     padding: 1rem;
     border: none;
@@ -68,39 +123,39 @@ h3 {
     font-weight: bold;
     text-transform: uppercase;
     cursor: pointer;
-  }
+}
   
-  .item-image.right:hover + .options,
+.item-image.right:hover + .options,
   #options:hover {
     opacity: 1;
-  }
-  .image {
+}
+.image {
     width: 750px;
     height: 650px;
     object-fit: cover;
     transition: transform 0.5s ease-in-out;
     border-radius: 10%;
     margin: 1px 1px 1px 1px;
-  }
-  .left {
+}
+.left {
     margin-right: 13vw;
     transform: translateX(-120%);
-  }
+}
   
-  .right {
+.right {
     right: 0;
     transform: translateX(120%);
+}
+  
+.show.left {
+  transform: translateX(0);
   }
   
-  .show.left {
+.show.right {
     transform: translateX(0);
-  }
+}
   
-  .show.right {
-    transform: translateX(0);
-  }
-  
-  #vs-button {
+#vs-button {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -115,9 +170,9 @@ h3 {
     font-weight: bold;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.25);
     transition: transform 0.5s ease-in-out
-  }
+}
 
-  .footer {
+.footer {
     height: 5%;
     position: fixed;
     left: 0;
@@ -126,18 +181,18 @@ h3 {
     background-color: #8458B3;
     color: white;
     display: inline-block;
-  }
-  #footer-left {
+}
+#footer-left {
     top: 0;
     margin-left: 4vw;
     margin-top: -5px;
     text-align: left;
     display: inline-block;
-  }
+}
   #footer-right {
     top: 0;
     margin-left: 4vw;
     margin-top: -5px;
     text-align: right;
     display: inline-block;
-  }
+}
