@@ -137,17 +137,17 @@ const Game = () => {
       <div className='container'>
 
         <div className="item-image">
-          <img src= {leftItem?.image} alt="1" className={`image left ${showImages ? 'show' : ''}`} />
+          <img src= {leftItem?.image} alt="left item" className={`image left ${showImages ? 'show' : ''}`} />
         </div>
 
         <button id="vs-button">VS</button>
 
-        <img src= {rightItem?.image} alt="Image 2" className={`image right ${showImages ? 'show' : ''}`} />
+        <img src= {rightItem?.image} alt="right item" className={`image right ${showImages ? 'show' : ''}`} />
         </div>
 
         {showOptions && (
         <div id="options">
-          <button onClick={() => handleUserClick(leftItem?.price, rightItem?.price, 'higher')}>Higher</button>
+          <button class = 'slide-left' onClick={() => handleUserClick(leftItem?.price, rightItem?.price, 'higher')}>Higher</button>
           <button onClick = {() => handleUserClick(leftItem?.price, rightItem?.price, 'lower')}>Lower</button>
         </div>
       )}
